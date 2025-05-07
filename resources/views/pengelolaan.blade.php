@@ -4,21 +4,20 @@
     @include('components.navbar')
 @endsection
 @section('main')
-    <div class="hero bg-light py-5 text-center">
-      <h1 class="display-4">Menu Ayam Geprek Paha Yae Miko</h1>
+    <div class="hero py-5 text-center" style="background: linear-gradient(to bottom, #f8f9fa, #ffffff);">
+      <h1 class="display-4">Menu Ayam Geprek</h1>
       <p class="lead">Nikmati berbagai pilihan menu ayam geprek terbaik kami dengan harga terjangkau.</p>
     </div>
 
     <div class="row justify-content-center gap-4">
       @foreach($menuMakanan as $index => $item)
-      <div class="col-lg-2 col-md-3 mb-4 d-flex">
-        @component('components.card', [
-        'image' => $item['image'], 
-        'name' => $item['nama'],
-        'price' => 'Rp ' . number_format($item['harga'], 0, ',', '.'),
-        'keterangan' => $item['keterangan']
-        ])
-        @endcomponent
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-4 d-flex justify-content-center">
+      <x-card 
+        :image="$item['image']" 
+        :name="$item['nama']" 
+        :price="'Rp ' . number_format($item['harga'], 0, ',', '.')" 
+        :keterangan="$item['keterangan']" 
+      />
       </div>
       @endforeach
     </div>
